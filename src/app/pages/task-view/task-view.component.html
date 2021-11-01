@@ -24,9 +24,13 @@
       </h1>
 
       <!-- Task Elements -->
-      <div class="task" *ngFor="let task of tasks">
+      <div class="task" *ngFor="let task of tasks" (click)="onTaskClick(task)">
         <p>{{ task.title }}</p>
       </div>
+
+      <button routerLink="./new-task" class="circle-add-button button is-primary">
+        <img src="../../../assets/plus.png" alt="">
+      </button>
 
     </div>
 
