@@ -19,13 +19,46 @@
     </div>
 
     <div class="task-list-container has-background-light">
-      <h1 class="title has-text-primary">
-        Tasks
-      </h1>
+      <div class="top-bar">
+        <h1 class="title has-text-primary">
+          Tasks
+        </h1>
+        <div class="dropdown is-hoverable is-right">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true">
+              <span>Settings</span>
+
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content">
+              <a [routerLink]="['/edit-list', selectedListId]" class="dropdown-item">
+                Edit
+              </a>
+              <a (click)="onDeleteListClick()" class="dropdown-item has-text-danger">
+                Delete
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Task Elements -->
-      <div class="task" *ngFor="let task of tasks" (click)="onTaskClick(task)">
-        <p>{{ task.title }}</p>
+      <div class="task" *ngFor="let task of tasks" (click)="onTaskClick(task)"
+        [ngClass]="{'completed': task.completed}">
+        <div class="task-text">
+          <p>{{ task.title }}</p>
+        </div>
+        <div class="task-buttons">
+          <button [routerLink]="['/lists', selectedListId, 'edit-task', task._id]"
+            class="button" style="margin-right: 10px;">
+            <h5>Edit</h5>
+          </button>
+          <button (click)="onDeleteTaskClick(task._id)"
+            class="button is-danger" style="margin-right: 10px;">
+            <h5>Delete</h5>
+          </button>
+        </div>
       </div>
 
       <button routerLink="./new-task" class="circle-add-button button is-primary">

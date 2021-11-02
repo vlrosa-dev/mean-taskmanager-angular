@@ -1,7 +1,6 @@
 import { TaskService } from 'src/app/task.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-new-task',
